@@ -1,0 +1,519 @@
+:root {
+    --secondary-color: #FFD700;
+    --current-location-color: #E40066;
+    --move-hover-color: #22577A;
+    --door-color: #03CEA4;
+}
+
+main {
+    max-width: 100vw;
+    overflow-x: scroll;
+}
+
+.text-style {
+    text-align: center;
+    padding: 20px;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(24, 50px);
+
+    min-width: 1200px;
+    
+    border: solid 3px black;
+    border-radius: 10px;
+}
+
+.tile-object {
+    background-color: lightgray;
+    border: solid 2px black;
+}
+
+.current-location {
+    background-color: var(--current-location-color);
+}
+
+.doorway {
+    background-color: var(--door-color);
+}
+
+.start {
+    background-color: var(--current-location-color);
+}
+
+.in-room {
+    border: solid 2px var(--current-location-color) !important;
+}
+
+.move-option {
+    background-color: var(--move-option-color);
+}
+
+.tile-object:hover {
+    background-color: var(--move-hover-color);
+}
+
+.room-object {
+    background-color: aqua;
+    border: solid 1px black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Game-Header */
+#game-body header {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 50px;
+}
+
+#header-div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#game-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
+
+    height: 100%;
+}
+
+#game-options button {
+    background-color: var(--move-hover-color);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+#game-options button:hover {
+    background-color:#4DA8DA;
+}
+
+.color-cover {
+    background-color: var(--secondary-color);
+    opacity: .5;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    z-index: -1;
+
+    border-radius: 5px;
+}
+/* End Game-Header */
+
+/* Hand Side Bar */
+.sticky {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.close-btn {
+    width: 25px;
+    cursor: pointer;
+}
+
+#hand-bar {
+    height: 0px;
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    width: 50%;
+    z-index: 1;
+}
+
+.side-bar-left {
+    max-height: 100vh;
+    height: 100vh;
+    overflow: scroll;
+
+    background-color: white;
+    border-radius: 5px;
+
+    padding: 10px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 40%;
+    border: double black 1px;
+    padding: 10px;
+
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+    position: relative;
+}
+
+.card h4 {
+    text-align: center;
+}
+
+.card-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    background-color: #1e1e1e;
+    cursor: pointer;
+}
+
+.tracking-sheet-row {
+    display: grid;
+    grid-template-columns: 2fr repeat(6, 1fr);
+    grid-gap: 2px;
+    margin-bottom: 2px;
+}
+
+.tracking-sheet-row div {
+    padding: 3px;
+    border: solid 1px black;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.unchecked {
+    background-color: white !important;
+}
+
+.unchecked:hover {
+    background-color: lightgray !important;
+}
+
+.cell-1 {
+    background-color: #FFFF00;
+}
+
+.cell-2 {
+    background-color: #FF0000;
+}
+
+.cell-3 {
+    background-color: #FFA500;
+}
+
+.cell-4 {
+    background-color: #00FF00;
+}
+
+.cell-5 {
+    background-color: #0000FF;
+}
+
+.cell-6 {
+    background-color: #8B00FF;
+}
+/* End Hand Side Bar */
+
+/* Game Side Bar */
+#game-bar {
+    height: 0px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+
+    width: 50%;
+    z-index: 1;
+}
+
+#turn-container {
+    display: flex;
+    justify-content: space-around;
+
+    margin-bottom: 75px;
+    text-align: center;
+}
+
+.turn-box {
+    border: solid black 1px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100px;
+    height: 100px;
+}
+
+.turn-box p {
+    font-size: 40px;
+}
+
+#dice-container {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+
+    margin-bottom: 75px;
+}
+
+.dice {
+    width: 75px;
+    height: 75px;
+
+    border: solid black 2px;
+    border-radius: 5px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.dice-dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 40px;
+
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.top-left {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+.top-middle {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+.top-right {
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
+
+.middle-left {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+.middle-middle {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+.middle-right {
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+
+.bottom-left {
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+.bottom-middle {
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+.bottom-right {
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+
+#btn-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#btn-container button {
+    background-color: var(--move-hover-color);
+    padding: 10px;
+    color: white;
+
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn-container button:hover {
+    background-color:#4DA8DA;
+}
+
+#form {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-item select {
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none; /* Remove default focus outline */
+    transition: border-color 0.3s;
+
+    width: 100%;
+}
+
+.form-item select:focus {
+    border-color: #007bff;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.flex-center-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-classic {
+    background-color: var(--move-hover-color);
+    padding: 10px;
+    color: white;
+
+    border-radius: 5px;
+    cursor: pointer;
+
+    height: 100%;
+    width: 100%;
+
+    color: white;
+}
+
+.button-classic:hover {
+    background-color:#4DA8DA;
+}
+/* End Game Side Bar */
+
+/* Card Reveal Popover */
+.popover {
+    position: absolute;
+
+}
+/* End Card Reveal Popover */
+
+/* Final Styles */
+.card-display {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.card-display .card {
+    width: 27% !important;
+}
+
+.card-div {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+#play-again-btn {
+    border: solid black 1px;
+    border-radius: 5px;
+
+    background-color: var(--move-hover-color);
+    width: 80%;
+    padding: 20px;
+
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+#play-again-btn:hover {
+    background-color: #4DA8DA;;
+}
+/* End Final Styles */
+
+/* Room Locations */
+/* 6x5 */
+.grid-top-left {
+    grid-row: 1/6;     /* 5 rows */
+    grid-column: 1/7;  /* 6 columns */
+}
+
+/* 5x7 */
+.grid-top-middle {
+    grid-row: 1/8;     /* 7 rows */
+    grid-column: 10/15; /* 9 columns */
+}
+
+/* 8x6 */
+.grid-top-right {
+    grid-row: 1/7;     /* 8 rows */
+    grid-column: 17/25; /* 8 columns */
+}
+
+/* 7x6 */
+.grid-middle-left {
+    grid-row: 9/15;    /* 7 rows */
+    grid-column: 1/8;  /* 7 columns */
+}
+
+/* 6x5 */
+.grid-middle-middle {
+    grid-row: 10/15;    /* 7 rows */
+    grid-column: 10/16; /* 9 columns */
+}
+
+/* 6x7 */
+.grid-middle-right {
+    grid-row: 9/16;    /* 7 rows */
+    grid-column: 19/25; /* 8 columns */
+}
+
+/* 7x7 */
+.grid-bottom-left {
+    grid-row: 18/25;   /* 9 rows */
+    grid-column: 1/8;  /* 7 columns */
+}
+
+/* 7x7 */
+.grid-bottom-middle {
+    grid-row: 18/25;   /* 9 rows */
+    grid-column: 10/17; /* 9 columns */
+}
+
+/* 6x6 */
+.grid-bottom-right {
+    grid-row: 19/25;   /* 9 rows */
+    grid-column: 19/25; /* 8 columns */
+}
+
+.shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
