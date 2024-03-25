@@ -6,7 +6,7 @@ This is a typescript project that is a spinoff from the popular board game "Clue
 
 Wrote this program for my fiance becuase she loves the game "Clue". I built this so I could create custom cards that have significant meaning to our relationship. It is a love letter sort of thing but more nerdy.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/UnbcOGlftIs)
 
 # Development Environment
 
